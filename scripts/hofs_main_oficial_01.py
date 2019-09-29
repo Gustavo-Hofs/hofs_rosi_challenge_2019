@@ -5,10 +5,10 @@ from std_msgs.msg import Float32MultiArray
 from rosi_defy.msg import ManipulatorJoints
 from sensor_msgs.msg import NavSatFix
 import numpy as np
-from filterpy.monte_carlo.resampling import *
 
 class HofsMain():
 
+    # Inicia variaveis de controle do robo
     tempo = None
     t0 = None
     leitura_gps = None
@@ -88,7 +88,6 @@ class HofsMain():
                     self.envia_comando_bracos(0, 0)
                     self.envia_comando_manipulador([0, 0, 0, 0, 0, 0])
             elif self.checkpoints_flags[3] == 0:
-            # if self.checkpoints_flags[3] == 0:
                 self.vai_pra(self.checkpoints_coords[3])
                 self.verifica_se_chegou(3)
             elif self.tarefas_flags[1] == 0:
