@@ -3,16 +3,11 @@ import rospy
 import numpy as np
 from rosi_defy.msg import RosiMovement
 from rosi_defy.msg import RosiMovementArray
-from rosi_defy.msg import ManipulatorJoints
 from std_msgs.msg import Float32MultiArray
 
 class RosiNodeClass():
 
 	# class attributes
-	max_translational_speed = 125 # in [m/s]
-	max_rotational_speed = 250 # in [rad/s]
-	max_arms_rotational_speed = 0.52 # in [rad/s]
-
 	# how to obtain these values? see Mandow et al. COMPLETE THIS REFERENCE
 	var_lambda = 0.965
 	wheel_radius = 0.1324
@@ -92,21 +87,30 @@ class RosiNodeClass():
 			node_sleep_rate.sleep()
 
 	def callback_tracao(self, msg):
+
+		# Recebe velocidade linear e angular
 		vel_linear_x = msg.data[0]
 		vel_angular_z = msg.data[1]
+
 		# -- computes traction command - kinematic math
 		# b matrix
 		b = np.array([[vel_linear_x],[vel_angular_z]])
+
 		# finds the joints control
 		# x = np.linalg.lstsq(self.kin_matrix_A, b, rcond=-1)[0]
 		x = np.dot(np.linalg.inv(self.kin_matrix_A), b)
+
 		# query the sides velocities
 		self.omega_right = x[0][0]
 		self.omega_left = x[1][0]
 
 	def callback_bracos(self, msg):
+
+		# Recebe velocidade frontal e traseira dos bracos
 		vel_angular_frente = msg.data[0]
 		vel_angular_tras = msg.data[1]
+		
+		# query the velocities
 		self.arm_front_rotSpeed = vel_angular_frente
 		self.arm_rear_rotSpeed = vel_angular_tras
 
