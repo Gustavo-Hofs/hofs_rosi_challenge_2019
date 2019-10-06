@@ -1,0 +1,8 @@
+<launch>
+
+	<rosparam command="load" file="$(find hofs_rosi_challenge_2019_oficial_02)/config/simulation_parameters.yaml" />
+
+	<node name='controlador' pkg='hofs_rosi_challenge_2019_oficial_02' type='controlador_de_movimento_oficial_02.py' />
+	<node name="hofs_main" pkg="hofs_rosi_challenge_2019_oficial_02" type="hofs_main_oficial_02.py" />
+
+</launch>

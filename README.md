@@ -8,7 +8,7 @@ Seguir todos os passos de instalação de https://github.com/filRocha/rosiChalle
 Após isso, ir no Workspace (`../catkin_ws/src`) e executar:
 
 ```
-$ git clone https://github.com/Gustavo-Hofs/hofs_rosi_challenge_2019.git hofs_rosi_challenge_2019_oficial_01
+$ git clone https://github.com/Gustavo-Hofs/hofs_rosi_challenge_2019.git hofs_rosi_challenge_2019_oficial_02
 ```
 
 Ir em (`../catkin_ws`) e executar:
@@ -20,5 +20,5 @@ $ catkin build
 # Execução
 
 ```
-$ roslaunch hofs_rosi_challenge_2019_oficial_01 hofs_oficial_01.launch
+$ roslaunch hofs_rosi_challenge_2019_oficial_02 hofs_oficial_02.launch
 ```
