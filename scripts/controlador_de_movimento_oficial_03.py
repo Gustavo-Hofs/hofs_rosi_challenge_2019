@@ -109,7 +109,7 @@ class RosiNodeClass():
 		# Recebe velocidade frontal e traseira dos bracos
 		vel_angular_frente = msg.data[0]
 		vel_angular_tras = msg.data[1]
-		
+
 		# query the velocities
 		self.arm_front_rotSpeed = vel_angular_frente
 		self.arm_rear_rotSpeed = vel_angular_tras
@@ -130,7 +130,7 @@ class RosiNodeClass():
 if __name__ == '__main__':
 
 	# initialize the node
-	rospy.init_node('controladore_de_movimento')
+	rospy.init_node('controlador_de_movimento')
 
 	# instantiate the class
 	try:
